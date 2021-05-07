@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./Header";
+import NavBar from "./NavBar";
+import Article from "./Article";
+import "./App.css";
+import Student from "./Student";
+import Post from "./Post";
+import {students,data} from "./data.js" //import named export
+import abc from "./data.js" //import default export
 
-function App() {
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <NavBar />
+      <Header />
+
+     {data.map(item=>{
+         return(
+             <Article data={item.para} heading={item.heading}/>
+         )
+     })}
+
+     {students.map(studentname=>{
+         return(
+             <Student name={studentname}/>
+         )
+     })}
+   
+     {abc.map(post=>{
+         return(
+             <Post title={post.title} body={post.body}/>
+         )
+     })}
+
     </div>
   );
 }
-
-export default App;
